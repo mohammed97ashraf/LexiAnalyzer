@@ -4,7 +4,7 @@ from nltk.tokenize import word_tokenize
 
 
 
-df = pd.read_csv('api/senticnet.csv')
+df = pd.read_csv('api/senticnet_file.csv')
 concept, polarity = list(df['CONCEPT']),list(df['POLARITY INTENSITY'])
 senticnet = result_dict = dict(zip(concept, polarity))
 
