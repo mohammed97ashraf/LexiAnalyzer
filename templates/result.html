@@ -1,0 +1,82 @@
+{% extends 'demo.html' %}
+
+{% block main %}
+{% if processed_data %}
+        <h2>sentiment_label: {% if processed_data['sentiment_label'] == 'Positive' %}
+            <p style="color:green;">{{processed_data['sentiment_label']}}</p>
+            {% elif processed_data['sentiment_label'] == 'Negative'%}
+            <p style="color:red;">{{processed_data['sentiment_label']}}</p>
+            {% else %}
+            <p style="color:blue;">{{processed_data['sentiment_label']}}</p>
+            {% endif%} </h2>
+        <h3> sentiment score : {{processed_data['sentiment_score']}}</h3>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  positive words
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Words</th>
+                                <th>Polarity Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, value in processed_data['positive_words'].items() %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                
+                                {% if value >= 0.6%}
+                                <td style="color:green;">{{ value }}</td>
+                                {%else%}
+                                <td>{{ value }}</td>
+                                {%endif%}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Nagative Words
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Words</th>
+                                <th>Polarity Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for key, value in processed_data['negative_words'].items() %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                
+                                {% if value < 0.5%}
+                                <td style="color:red;">{{ value }}</td>
+                                {%else%}
+                                <td>{{ value }}</td>
+                                {%endif%}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+            
+    {% else %}
+        <h2>No data processed</h2>
+    {% endif %}
+{% endblock %}

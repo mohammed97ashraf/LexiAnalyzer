@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>LexiAnalyder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script type="module" src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+</head>
+<body> 
+    <br/>
+    <div class="lc-block">
+        <a class="btn btn-dark" href="/" role="button">HOME<ion-icon name="open-outline"></ion-icon></a>
+    </div>
+ <!-- Main Content -->
+ <div class="container mt-5" id="demo">
+    <h2>Sentiment Analysis Demo:</h2>
+    <form action="/demo" method="POST">
+    <label for="lexicon">Choose a Lexical:</label>
+            <select id="lexicon" name="lexicon">
+            <option value="TextBlob">TextBlob</option>
+            <option value="SentiWordNet">SentiWordNet</option>
+            <option value="AFINN">AFINN</option>
+            <option value="VADER">VADER</option>
+            <option value="Pattern">Pattern</option>
+            <option value="SenticNet">SenticNet</option>
+            </select>
+        <div class="mb-3">
+            <textarea class="form-control" name="text" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Analyze</button>
+    </form>
+</div>
+<!--Result-->
+
+<div class="container">
+    {% block main%}
+    {% endblock %}
+</div>
+</body>
+</html>
