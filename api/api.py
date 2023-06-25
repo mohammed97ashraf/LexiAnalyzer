@@ -137,7 +137,7 @@ def Senticnet():
 
 
 @api.post('/AFINN')
-def afinn():
+def afinns():
     """
     A simple endpoint to sentiment using Senticnet with a POST request.
     ---
