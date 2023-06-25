@@ -18,8 +18,6 @@ swagger = Swagger(app)
 
 app.register_blueprint(api,url_prefix="/api")
 
-bootstrap = Bootstrap(app)
-
 
 @app.route("/")
 def index():
@@ -58,6 +56,9 @@ def demo():
             
     else:
         return render_template("demo.html")
+    
+if __name__ == "__main__":
+    app.run()
 
  
 
