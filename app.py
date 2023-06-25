@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint ,redirect,url_for,render_template,request
 from api.api import api
 from flasgger import Swagger
-from flask_bootstrap import Bootstrap
+
 import json
 import api.textblob_v1 as textblob
 import api.pattern_v1 as pattern
