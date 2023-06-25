@@ -8,6 +8,13 @@ import api.afinn as afinn
 import api.sentiwordnet_v1 as sentiwordnet
 import api.senticnet as senticnet
 
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('sentiwordnet')
+nltk.download('wordnet')
+
 
 api = Blueprint("api", __name__,static_folder="",template_folder="")
 

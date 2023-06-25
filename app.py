@@ -1,7 +1,6 @@
 from flask import Flask, Blueprint ,redirect,url_for,render_template,request
 from api.api import api
 from flasgger import Swagger
-
 import json
 import api.textblob_v1 as textblob
 import api.pattern_v1 as pattern
@@ -60,5 +59,6 @@ def demo():
 
 
  
-
+""" if __name__ == "__main__":
+    app.run(debug=True) """
 
